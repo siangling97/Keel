@@ -2,6 +2,8 @@
 
 Keep your portfolio on course. Import holdings from several brokers, see how far they've drifted from your target mix, plan tax-smart rebalancing trades, project dividend income, and find tax-loss harvesting chances.
 
+**Live app:** https://keel-delta-two.vercel.app (click **Try the demo** to explore with sample data, no account needed)
+
 > For education only. This is not financial or tax advice.
 
 **Stack:** React 19 + Tailwind CSS (Vite) · Express · PostgreSQL · Vitest
