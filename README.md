@@ -26,13 +26,14 @@ Click **Try the demo** to use the app with sample data and no account, or create
 ```
 Browser ──HTTPS──▶ Vercel (one project, root: server/)
                     ├─ /assets, /index.html ... React app, served from Vercel's CDN (server/public)
-                    └─ /api/* ................. Express app (server/index.js) as one Vercel Function
+                    └─ /api/* ................. Express app (server/api/index.js) as one Vercel Function
                                    │
                                    └──TLS, verified──▶ Supabase PostgreSQL (transaction pooler, port 6543)
 ```
 
 - **One domain for site and API**, so the httpOnly login cookie works without any cross-site setup, and rate limiting sees each visitor's real IP.
-- **Build:** `npm run build` in `server/` builds the React app into `server/public`. Vercel serves `public/` from its CDN and runs the Express app for `/api/*`. `vercel.json` sends every other path to `index.html` (client-side routing) and adds security headers (Content-Security-Policy, X-Frame-Options and others).
+- **Build:** `npm run build` in `server/` builds the React app into `server/public`. `vercel.json` sets the build up (framework preset "Other", output folder `public`): Vercel serves real files from its CDN first, rewrites `/api/*` to the Express function (Express still sees the original path), sends page URLs like `/overview` to `index.html` for client-side routing, and adds security headers (Content-Security-Policy, X-Frame-Options and others).
+  - Why not Vercel's Express preset? It collects `public/` before the build command runs, so a website built during deploy never reached the CDN.
 - **Database user with limited rights:** the app connects as `keel_app`, not as the admin. It can read and write rows in Keel's tables, and can't create tables or manage roles (`db/supabase/app-role.sql`).
 - **Row Level Security on every table** (migration 004). Supabase automatically puts a public web API in front of tables; with RLS on and no policies, that API can't read a row. The roles it uses also have every privilege revoked.
 - **Encrypted and verified database connection:** `DATABASE_CA_CERT` holds Supabase's public root certificates (`db/certs/`), so the server only talks to a database with a certificate Supabase signed. TLS verification is never turned off.
@@ -122,7 +123,7 @@ Fill in `server/src/sample-data/import-template.csv` (one row per purchase, call
 
 ```
 server/
-  index.js           Production entry: Vercel imports the Express app from here
+  api/index.js       Production entry: Vercel runs this as the API function
   db/migrations/     PostgreSQL schema as numbered migrations (run once each, in order)
   src/app.js         Builds the Express app (database and settings are passed in)
   src/auth/          Register, login, logout, sessions

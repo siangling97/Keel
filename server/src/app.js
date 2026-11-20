@@ -1,6 +1,6 @@
 // Builds the Express app. Nothing here opens a port or a database by itself: the caller passes in
 // the database and settings. That makes the app easy to test (tests pass an in-memory database)
-// and easy to deploy (Vercel imports the app from index.js).
+// and easy to deploy (Vercel runs it from api/index.js).
 
 import express from 'express';
 import helmet from 'helmet';
