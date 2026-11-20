@@ -1,0 +1,17 @@
+{
+  "_note": "Made-up sample data for testing. Prices and dividends are NOT real market data.",
+  "holdings": [
+    { "ticker": "VTI",  "name": "Vanguard Total Stock Market ETF",        "assetClass": "US_EQUITY",   "shares": 60,  "currentPrice": 300,  "currentValue": 18000, "annualDividendPerShare": 3.60, "paymentsPerYear": 4 },
+    { "ticker": "SCHD", "name": "Schwab US Dividend Equity ETF",          "assetClass": "US_EQUITY",   "shares": 300, "currentPrice": 30,   "currentValue": 9000,  "annualDividendPerShare": 1.08, "paymentsPerYear": 4, "dividendGrowthRate": 0.07 },
+    { "ticker": "VXUS", "name": "Vanguard Total International Stock ETF", "assetClass": "INTL_EQUITY", "shares": 64,  "currentPrice": 62.5, "currentValue": 4000,  "annualDividendPerShare": 1.94, "paymentsPerYear": 4 },
+    { "ticker": "BND",  "name": "Vanguard Total Bond Market ETF",         "assetClass": "BONDS",       "shares": 100, "currentPrice": 70,   "currentValue": 7000,  "annualDividendPerShare": 2.45, "paymentsPerYear": 12, "dividendGrowthRate": 0, "priceGrowthRate": 0.01 },
+    { "ticker": "VNQ",  "name": "Vanguard Real Estate ETF",               "assetClass": "REIT",        "shares": 25,  "currentPrice": 100,  "currentValue": 2500,  "annualDividendPerShare": 3.80, "paymentsPerYear": 4 },
+    { "ticker": "O",    "name": "Realty Income",                          "assetClass": "REIT",        "shares": 25,  "currentPrice": 60,   "currentValue": 1500,  "annualDividendPerShare": 3.24, "paymentsPerYear": 12 }
+  ],
+  "targetWeights": {
+    "US_EQUITY": 0.55,
+    "INTL_EQUITY": 0.20,
+    "BONDS": 0.15,
+    "REIT": 0.10
+  }
+}

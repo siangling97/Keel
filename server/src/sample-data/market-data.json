@@ -1,0 +1,9 @@
+{
+  "_note": "Made-up prices and dividends for testing. NOT real market data. Step 7 replaces this with a live API.",
+  "VTI":  { "price": 300,  "forwardAnnualDividend": 3.60, "paymentsPerYear": 4 },
+  "SCHD": { "price": 30,   "forwardAnnualDividend": 1.08, "paymentsPerYear": 4 },
+  "VXUS": { "price": 62.5, "forwardAnnualDividend": 1.94, "paymentsPerYear": 4 },
+  "BND":  { "price": 70,   "forwardAnnualDividend": 2.45, "paymentsPerYear": 12 },
+  "VNQ":  { "price": 100,  "forwardAnnualDividend": 3.80, "paymentsPerYear": 4 },
+  "O":    { "price": 60,   "forwardAnnualDividend": 3.24, "paymentsPerYear": 12 }
+}

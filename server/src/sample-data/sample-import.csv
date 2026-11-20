@@ -1,0 +1,9 @@
+Account,Account Type,Ticker,Shares,Cost Per Share,Acquired On,Asset Class
+Fidelity Brokerage,Taxable,VXUS,50,$75.00,02/10/2024,Intl Equity
+Fidelity Brokerage,Taxable,VXUS,20,$55.00,10/01/2022,Intl Equity
+Fidelity Brokerage,Taxable,VTI,60,$210.00,05/03/2021,US Equity
+Fidelity Brokerage,Taxable,BND,100,$78.00,12/01/2025,Bonds
+Vanguard Roth IRA,Roth IRA,BND,40,80,2024-04-12,Bonds
+Vanguard Roth IRA,Roth IRA,VXUS,10,66,2026-11-05,Intl Equity
+Webull Individual,Individual,VNQ,30,120,2025-06-01,REIT
+Webull Individual,Individual,O,25,62,2025-09-15,REIT

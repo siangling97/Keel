@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/*
+  Keel design tokens.
+  - Paper and ink: a cool, slightly green-grey statement paper, with green-black "engraver's ink".
+  - One action color (deep green). Gains and losses have their own text colors.
+  - Asset-class colors were checked with a color-vision validator: every pair of the four stays
+    distinguishable for common color blindness when combined with the labels and gaps the strip uses.
+  All text colors are 4.5:1 or more on both backgrounds.
+*/
+@theme {
+  --font-sans: "Public Sans Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-paper: #f3f5f2;
+  --color-surface: #fcfdfb;
+  --color-ink: #1f2d29;
+  --color-ink-2: #4c5a55;
+  --color-muted: #5f6b66;
+  --color-rule: #dce2dd;
+  --color-rule-strong: #c3cbc6;
+
+  --color-primary: #1d6650;
+  --color-primary-hover: #17543f;
+  --color-primary-soft: #e3efe9;
+
+  --color-gain: #17663f;
+  --color-loss: #b42318;
+  --color-loss-soft: #fbeae8;
+  --color-warn: #7a5000;
+  --color-warn-soft: #fdf3dc;
+
+  --color-class-1: #1f8a5f;
+  --color-class-2: #3a68d8;
+  --color-class-3: #b98100;
+  --color-class-4: #d9488f;
+  --color-class-other: #7d8883;
+
+  --radius-control: 6px;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    min-height: 100vh;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  /* Columns of numbers line up; big standalone numbers keep normal figures. */
+  .num {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap; /* "Feb 10, 2024" or "$1,234.56" never breaks across lines */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
