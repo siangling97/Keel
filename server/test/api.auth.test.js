@@ -120,6 +120,15 @@ describe('protection', () => {
     expect(res.headers['x-powered-by']).toBeUndefined();
   });
 
+  it.each([
+    ['a normal answer', '/api/health'],
+    ['a login error', '/api/accounts'],
+    ['a missing path', '/assets/old-build.js'],
+  ])('tells browsers not to store %s', async (_, path) => {
+    const res = await request(app).get(path);
+    expect(res.headers['cache-control']).toBe('no-store');
+  });
+
   it('bad JSON gets a 400, not a crash', async () => {
     const res = await request(app).post('/api/auth/login').set('Content-Type', 'application/json').send('{"email":');
     expect(res.status).toBe(400);

@@ -20,6 +20,12 @@ export function createApp({ db, config, marketData }) {
   if (config.trustProxy) app.set('trust proxy', 1);
 
   app.use(helmet()); // security headers (nosniff, no x-powered-by, frame blocking, ...)
+
+  // API answers hold personal financial data, so browsers and proxies must not keep a copy.
+  app.use((req, res, next) => {
+    res.set('Cache-Control', 'no-store');
+    next();
+  });
   app.use(express.json({ limit: '2mb' }));
   app.use(cookieParser());
 
